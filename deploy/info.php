@@ -12,6 +12,7 @@ $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
 $app['license_core'] = 'LGPLv3';
 $app['description'] = lang('intrusion_detection_app_description');
+$app['tooltip'] = lang('intrusion_detection_tooltip');
 
 /////////////////////////////////////////////////////////////////////////////
 // App name and categories

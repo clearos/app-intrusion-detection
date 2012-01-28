@@ -1,5 +1,7 @@
 <?php
 
+$lang['intrusion_detection_tooltip'] = 'The default open source rule set is included. Commercial rule sets provide more than 10 times the coverage with regular updates.';
+
 $lang['intrusion_detection_app_description'] = 'The advanced Intrusion Detection system performs security scanning at the network level in real-time.';
 $lang['intrusion_detection_app_name'] = 'Intrusion Detection';
 
