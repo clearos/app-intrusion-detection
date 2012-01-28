@@ -49,9 +49,9 @@ $buttons = array(form_submit_update('submit', 'high'));
 ///////////////////////////////////////////////////////////////////////////////
 
 $headers = array(
+    lang('intrusion_detection_rule_set_type'),
     lang('intrusion_detection_rule_set'),
     lang('base_description'),
-    lang('intrusion_detection_rule_set_type'),
     lang('intrusion_detection_rules'),
 );
 
@@ -71,9 +71,9 @@ foreach ($rule_sets as $rule_set => $entry) {
     $item['name'] = 'rule_sets[' . $rule_set . ']';
     $item['state'] = $entry['active'];
     $item['details'] = array(
+        $entry['type_description'],
         $rule_set,
         $entry['description'],
-        $entry['type_description'],
         $entry['count']
     );
 
@@ -84,13 +84,16 @@ foreach ($rule_sets as $rule_set => $entry) {
 // List table
 ///////////////////////////////////////////////////////////////////////////////
 
+$options['grouping'] = TRUE;
+
 echo form_open('intrusion_detection');
 
 echo list_table(
     lang('intrusion_detection_rule_sets'),
     $buttons,
     $headers,
-    $items
+    $items,
+    $options
 );
 
 echo form_close();
