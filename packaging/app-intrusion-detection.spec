@@ -41,6 +41,7 @@ mkdir -p -m 755 %{buildroot}/usr/clearos/apps/intrusion_detection
 cp -r * %{buildroot}/usr/clearos/apps/intrusion_detection/
 
 install -d -m 0755 %{buildroot}/var/clearos/intrusion_detection
+install -d -m 0755 %{buildroot}/var/clearos/intrusion_detection/backup
 install -D -m 0644 packaging/routewatch-intrusion-detection.conf %{buildroot}/etc/clearsync.d/routewatch-intrusion-detection.conf
 install -D -m 0644 packaging/snort.php %{buildroot}/var/clearos/base/daemon/snort.php
 
@@ -83,6 +84,7 @@ exit 0
 %exclude /usr/clearos/apps/intrusion_detection/tests
 %dir /usr/clearos/apps/intrusion_detection
 %dir /var/clearos/intrusion_detection
+%dir /var/clearos/intrusion_detection/backup
 /usr/clearos/apps/intrusion_detection/deploy
 /usr/clearos/apps/intrusion_detection/language
 /usr/clearos/apps/intrusion_detection/libraries
