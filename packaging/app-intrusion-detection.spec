@@ -1,7 +1,7 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 1.0.10
+Version: 1.1.0
 Release: 1%{dist}
 Summary: Intrusion Detection
 License: GPLv3
@@ -16,7 +16,7 @@ Requires: app-network
 The advanced Intrusion Detection system performs security scanning at the network level in real-time.
 
 %package core
-Summary: Intrusion Detection - APIs and install
+Summary: Intrusion Detection - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
