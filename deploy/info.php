@@ -44,3 +44,9 @@ $app['core_directory_manifest'] = array(
 $app['core_file_manifest'] = array(
     'snort.php'=> array('target' => '/var/clearos/base/daemon/snort.php'),
 );
+
+$app['delete_dependency'] = array(
+    'app-intrusion-detection-core',
+    'snort',
+    'snort-gpl-rules'
+);
