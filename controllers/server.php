@@ -3,9 +3,9 @@
 /**
  * Intrusion detection daemon controller.
  *
- * @category   Apps
- * @package    Intrusion_Detection
- * @subpackage Controllers
+ * @category   apps
+ * @package    intrusion-detection
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -49,9 +49,9 @@ require clearos_app_base('base') . '/controllers/daemon.php';
 /**
  * Intrusion detection daemon controller.
  *
- * @category   Apps
- * @package    Intrusion_Detection
- * @subpackage Controllers
+ * @category   apps
+ * @package    intrusion-detection
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

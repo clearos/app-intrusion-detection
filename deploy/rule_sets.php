@@ -3,9 +3,9 @@
 /**
  * Snort intrusion detection class.
  *
- * @category   Apps
- * @package    Intrusion_Detection
- * @subpackage Libraries
+ * @category   apps
+ * @package    intrusion-detection
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2005-2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
