@@ -32,6 +32,7 @@ $app['requires'] = array(
 
 $app['core_requires'] = array(
     'app-network-core',
+    'rsyslog',
     'snort >= 2.9.0.4',
     'snort-gpl-rules',
 );
@@ -43,6 +44,11 @@ $app['core_directory_manifest'] = array(
 
 $app['core_file_manifest'] = array(
     'snort.php'=> array('target' => '/var/clearos/base/daemon/snort.php'),
+    'snort-rsyslog.conf'=> array(
+        'target' => '/etc/rsyslog.d/snort.conf',
+        'config' => TRUE,
+        'config_params' => 'noreplace',
+    ),
     'intrusion_detection.conf'=> array(
         'target' => '/etc/clearos/intrusion_detection.conf',
         'config' => TRUE,
