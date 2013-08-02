@@ -43,6 +43,15 @@ $app['core_directory_manifest'] = array(
 
 $app['core_file_manifest'] = array(
     'snort.php'=> array('target' => '/var/clearos/base/daemon/snort.php'),
+    'intrusion_detection.conf'=> array(
+        'target' => '/etc/clearos/intrusion_detection.conf',
+        'config' => TRUE,
+        'config_params' => 'noreplace',
+    ),
+    'network-configuration-event'=> array(
+        'target' => '/var/clearos/events/network_configuration/intrusion_detection',
+        'mode' => '0755'
+    ),
 );
 
 $app['delete_dependency'] = array(

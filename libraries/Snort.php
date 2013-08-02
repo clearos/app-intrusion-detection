@@ -59,17 +59,23 @@ use \clearos\apps\base\Daemon as Daemon;
 use \clearos\apps\base\File as File;
 use \clearos\apps\base\Folder as Folder;
 use \clearos\apps\base\Software as Software;
+use \clearos\apps\network\Iface_Manager as Iface_Manager;
 
 clearos_load_library('base/Daemon');
 clearos_load_library('base/File');
 clearos_load_library('base/Folder');
 clearos_load_library('base/Software');
+clearos_load_library('network/Iface_Manager');
 
 // Exceptions
 //-----------
 
+use \clearos\apps\base\File_No_Match_Exception as File_No_Match_Exception;
+use \clearos\apps\base\File_Not_Found_Exception as File_Not_Found_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
 
+clearos_load_library('base/File_No_Match_Exception');
+clearos_load_library('base/File_Not_Found_Exception');
 clearos_load_library('base/Validation_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -94,6 +100,7 @@ class Snort extends Daemon
     // C O N S T A N T S
     ///////////////////////////////////////////////////////////////////////////////
 
+    const FILE_APP_CONFIG = '/etc/clearos/intrusion_detection.conf';
     const FILE_CONFIG = '/etc/snort.conf';
     const PATH_RULES =  '/etc/snort.d/rules';
     const TYPE_POLICY = 'policy';
@@ -131,6 +138,61 @@ class Snort extends Daemon
             self::TYPE_SECURITY => lang('intrusion_detection_rule_set_type_security'),
             self::TYPE_UNSUPPORTED => lang('intrusion_detection_rule_set_type_unsupported')
         );
+    }
+
+    /**
+     * Automatically configures parts of Snort.
+     *
+     * Some of the Snort configuration depends on the network configuration.
+     * For example, adding a second LAN interface means snort needs to 
+     * adjust its internal network settings.
+     *
+     * @return void
+     * @throws Engine_Exception, Validation_Exception
+     */
+
+    public function auto_configure()
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        // Check auto-configure state
+        //---------------------------
+
+        $app_config = new File(self::FILE_APP_CONFIG);
+
+        try {
+            $value = $app_config->lookup_value("/^auto_configure\s*=\s*/i");
+            if (preg_match('/no/i', $value))
+                return;
+        } catch (File_Not_Found_Exception $e) {
+        } catch (File_No_Match_Exception $e) {
+        }
+
+        // Implant LAN interface configuration
+        //------------------------------------
+
+        try {
+            $file = new File(self::FILE_CONFIG);
+            $current = $file->lookup_value("/^ipvar HOME_NET\s*/i");
+        } catch (File_Not_Found_Exception $e) {
+            return; // Bail
+        } catch (File_No_Match_Exception $e) {
+            return; // Bail
+        }
+
+        $iface_manager = new Iface_Manager();
+        $networks = $iface_manager->get_most_trusted_networks(TRUE, TRUE);
+        $new = '[' . implode(',', $networks) . ']';
+
+        // Bail if nothing has changed
+        if ($new === $current)
+            return;
+
+        $file->replace_lines('/^ipvar HOME_NET\s*/', "ipvar HOME_NET $new\n");
+
+        $this->reset();
+
+        clearos_log('intrusion-detection', lang('base_network_configuration_updated'));
     }
 
     /**
