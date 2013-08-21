@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# PPPOEKLUDGE
+#
+# PPPoE and Snort do not mix well.  When a ppp0 interface is torn down,
+# it takes Snort down with it.  This script restarts snort when the
+# "network connected" event is triggered.
+
+INIT=`ls /etc/rc.d/rc3.d/S[0-9]*snort 2>/dev/null`
+
+if [ ! -z $INIT ]; then
+	PID=`/sbin/pidof snort`
+	if [ "$PID" == "" ]; then
+		logger -p local6.notice -t intrusion-detection "restarting snort"
+		/etc/rc.d/init.d/snort start
+	fi
+fi

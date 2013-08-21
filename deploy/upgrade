@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Auto-configure the network (HOME_NET)
+#_-------------------------------------
+
+/var/clearos/events/network_configuration/intrusion_detection
+
+# Restart rsyslog for configlet
+#------------------------------
+
+service rsyslog condrestart

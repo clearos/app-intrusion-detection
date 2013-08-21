@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'intrusion_detection';
-$app['version'] = '1.1.0';
+$app['version'] = '1.4.70';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -56,6 +56,10 @@ $app['core_file_manifest'] = array(
     ),
     'network-configuration-event'=> array(
         'target' => '/var/clearos/events/network_configuration/intrusion_detection',
+        'mode' => '0755'
+    ),
+    'network-connected-event'=> array(
+        'target' => '/var/clearos/events/network_connected/intrusion_detection',
         'mode' => '0755'
     ),
 );

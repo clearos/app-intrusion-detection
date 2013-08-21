@@ -1,7 +1,7 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 1.1.0
+Version: 1.4.70
 Release: 1%{dist}
 Summary: Intrusion Detection
 License: GPLv3
@@ -42,6 +42,7 @@ install -d -m 0755 %{buildroot}/var/clearos/intrusion_detection
 install -d -m 0755 %{buildroot}/var/clearos/intrusion_detection/backup
 install -D -m 0644 packaging/intrusion_detection.conf %{buildroot}/etc/clearos/intrusion_detection.conf
 install -D -m 0755 packaging/network-configuration-event %{buildroot}/var/clearos/events/network_configuration/intrusion_detection
+install -D -m 0755 packaging/network-connected-event %{buildroot}/var/clearos/events/network_connected/intrusion_detection
 install -D -m 0644 packaging/snort-rsyslog.conf %{buildroot}/etc/rsyslog.d/snort.conf
 install -D -m 0644 packaging/snort.php %{buildroot}/var/clearos/base/daemon/snort.php
 
@@ -90,5 +91,6 @@ exit 0
 /usr/clearos/apps/intrusion_detection/libraries
 %config(noreplace) /etc/clearos/intrusion_detection.conf
 /var/clearos/events/network_configuration/intrusion_detection
+/var/clearos/events/network_connected/intrusion_detection
 %config(noreplace) /etc/rsyslog.d/snort.conf
 /var/clearos/base/daemon/snort.php
