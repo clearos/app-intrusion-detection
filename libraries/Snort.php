@@ -60,12 +60,20 @@ use \clearos\apps\base\File as File;
 use \clearos\apps\base\Folder as Folder;
 use \clearos\apps\base\Software as Software;
 use \clearos\apps\network\Iface_Manager as Iface_Manager;
+use \clearos\apps\network\Network as Network;
+use \clearos\apps\network\Network_Utils as Network_Utils;
+use \clearos\apps\network\Role as Role;
+use \clearos\apps\network\Routes as Routes;
 
 clearos_load_library('base/Daemon');
 clearos_load_library('base/File');
 clearos_load_library('base/Folder');
 clearos_load_library('base/Software');
 clearos_load_library('network/Iface_Manager');
+clearos_load_library('network/Network');
+clearos_load_library('network/Network_Utils');
+clearos_load_library('network/Role');
+clearos_load_library('network/Routes');
 
 // Exceptions
 //-----------
@@ -180,9 +188,34 @@ class Snort extends Daemon
             return; // Bail
         }
 
+
         $iface_manager = new Iface_Manager();
-        $networks = $iface_manager->get_most_trusted_networks(TRUE, TRUE);
-        $new = '[' . implode(',', $networks) . ']';
+        $network = new Network();
+        $routes = new Routes();
+
+        $mode = $network->get_mode();
+        $ifaces = $iface_manager->get_interface_details();
+        $extra_lans = $routes->get_extra_lans();
+
+        foreach ($ifaces as $iface => $details) { 
+            // Bail if no IP exists
+            if (empty($details['address']))
+                continue;
+
+            // We want to include all LAN, HotLAN and DMZ networks
+            // as well as external IPs to our HOME_NET parameter.
+            if ($details['role'] === Role::ROLE_EXTERNAL) {
+                $home_nets[] = $details['address'];
+            } else {
+                $home_nets[] = Network_Utils::get_network_address($details['address'], $details['netmask']) . '/' .
+                    Network_Utils::get_prefix($details['netmask']);
+            }
+        }
+
+        foreach ($extra_lans as $lan)
+            $home_nets[] = $lan;
+        
+        $new = '[' . implode(',', $home_nets) . ']';
 
         // Bail if nothing has changed
         if ($new === $current)
