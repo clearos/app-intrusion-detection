@@ -1,5 +1,30 @@
 #!/bin/sh
 
+# Upgrade snort.conf -- craptastic config file
+#---------------------------------------------
+
+TIMESTAMP=`date "+%b-%d-%Y-%T"`
+
+# Set default configuration
+#--------------------------
+
+IS_CURRENT=`grep VERSIONS.*2.9.5.3 /etc/snort.conf 2>/dev/null`
+
+if [ -z "$IS_CURRENT" ]; then
+    logger -p local6.notice -t installer "app-intrusion-detection-core - upgrading snort"
+    mv /etc/snort.conf /var/clearos/intrusion_detection/backup/snort.conf.$TIMESTAMP
+
+    # Copy default
+    cp /usr/clearos/apps/intrusion_detection/deploy/snort.conf /etc/snort.conf
+
+    # Remove default rulesets
+    sed -i -e '/include .RULE_PATH/d' /etc/snort.conf
+
+    # Add previously configured rulesets
+    grep "^include .RULE_PATH"  /var/clearos/intrusion_detection/backup/snort.conf.$TIMESTAMP >> /etc/snort.conf
+fi
+exit 0
+
 # Auto-configure the network (HOME_NET)
 #_-------------------------------------
 

@@ -33,7 +33,7 @@ $app['requires'] = array(
 $app['core_requires'] = array(
     'app-network-core',
     'rsyslog',
-    'snort >= 2.9.0.4',
+    'snort >= 2.9.5.3',
     'snort-gpl-rules',
 );
 
