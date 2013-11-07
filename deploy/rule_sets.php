@@ -16,6 +16,7 @@ $rule_sets = array(
 	'activex'          => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_activex') ),
 	'attack-responses' => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_attack_responses') ),
 	'attack_responses' => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_attack_responses') ),
+	'attack_response' => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_attack_responses') ),
 	'botcc'            => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_botnet') ),
 	'backdoor'         => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_backdoor') ),
 	'bad-traffic'      => array( 'type' => 'security',    'description' => lang('intrusion_detection_rulelist_bad_traffic') ),
