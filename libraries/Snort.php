@@ -142,9 +142,9 @@ class Snort extends Daemon
         $this->metadata = $rule_sets;
 
         $this->types = array(
-            self::TYPE_POLICY => lang('intrusion_detection_rule_set_type_policy'),
-            self::TYPE_SECURITY => lang('intrusion_detection_rule_set_type_security'),
-            self::TYPE_UNSUPPORTED => lang('intrusion_detection_rule_set_type_unsupported')
+            self::TYPE_POLICY => lang('intrusion_detection_policy'),
+            self::TYPE_SECURITY => lang('intrusion_detection_security'),
+            self::TYPE_UNSUPPORTED => lang('intrusion_detection_unsupported')
         );
     }
 
@@ -459,7 +459,7 @@ class Snort extends Daemon
 
                 if (empty($this->metadata[$rule_set]['type'])) {
                     $info['type'] = self::TYPE_UNSUPPORTED;
-                    $info['type_description'] = lang('instrusion_detection_type_unsupported');
+                    $info['type_description'] = lang('intrusion_detection_unsupported');
                 } else {
                     $info['type'] = $this->metadata[$rule_set]['type'];
                     $info['type_description'] = $this->types[$this->metadata[$rule_set]['type']];
