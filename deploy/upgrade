@@ -8,7 +8,7 @@ TIMESTAMP=`date "+%b-%d-%Y-%T"`
 # Set default configuration
 #--------------------------
 
-IS_CURRENT=`grep VERSIONS.*2.9.5.3 /etc/snort.conf 2>/dev/null`
+IS_CURRENT=`grep VERSIONS.*2.9.[56] /etc/snort.conf 2>/dev/null`
 
 if [ -z "$IS_CURRENT" ]; then
     logger -p local6.notice -t installer "app-intrusion-detection-core - upgrading snort"
