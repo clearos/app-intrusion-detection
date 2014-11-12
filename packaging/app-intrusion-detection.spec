@@ -1,7 +1,7 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 1.6.5
+Version: 2.0.5
 Release: 1%{dist}
 Summary: Intrusion Detection
 License: GPLv3
@@ -22,7 +22,7 @@ Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core
 Requires: rsyslog
-Requires: snort >= 2.9.5.3
+Requires: snort >= 2.9.6.2
 Requires: snort-gpl-rules
 
 %description core

@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'intrusion_detection';
-$app['version'] = '1.6.5';
+$app['version'] = '2.0.5';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -33,7 +33,7 @@ $app['requires'] = array(
 $app['core_requires'] = array(
     'app-network-core',
     'rsyslog',
-    'snort >= 2.9.5.3',
+    'snort >= 2.9.6.2',
     'snort-gpl-rules',
 );
 
