@@ -428,6 +428,10 @@ class Snort extends Daemon
         foreach ($vendors as $vendor) {
 
             $folder = new Folder(self::PATH_RULES . '/' . $vendor);
+
+            if (! $folder->exists())
+                continue;
+
             $installed = $folder->get_listing();
 
             foreach ($installed as $rule_set_file) {
