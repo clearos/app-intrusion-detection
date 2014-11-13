@@ -32,4 +32,4 @@ fi
 # Restart rsyslog for configlet
 #------------------------------
 
-service rsyslog condrestart
+service rsyslog condrestart >/dev/null 2>&1

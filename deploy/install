@@ -17,7 +17,7 @@ cp /usr/clearos/apps/intrusion_detection/deploy/snort.conf /etc/snort.conf
 #-----------------------
 
 logger -p local6.notice -t installer "app-intrusion-detection-core - enabling intrusion detection server"
-chkconfig snort on
+chkconfig snort on >/dev/null 2>&1
 
 logger -p local6.notice -t installer "app-intrusion-detection-core - starting intrusion detection server"
-service snort start
+service snort start >/dev/null 2>&1
