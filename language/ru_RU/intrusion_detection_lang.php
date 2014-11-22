@@ -3,9 +3,9 @@
 // http://www.clearfoundation.com/docs/developer/translations/
 
 $lang['intrusion_detection_app_description'] = 'The advanced Intrusion Detection app performs security scanning at the network level in real-time.';
-$lang['intrusion_detection_app_name'] = 'Intrusion Detection';
+$lang['intrusion_detection_app_name'] = 'Обнаружение вторжений';
 $lang['intrusion_detection_base_rule_set'] = 'Base Rule Set';
-$lang['intrusion_detection_intrusion_detection'] = 'Intrusion Detection';
+$lang['intrusion_detection_intrusion_detection'] = 'Обнаружение вторжений';
 $lang['intrusion_detection_last_update'] = 'Last Update';
 $lang['intrusion_detection_policy'] = 'Policy';
 $lang['intrusion_detection_rule_set'] = 'Rule Set';
@@ -24,9 +24,9 @@ $lang['intrusion_detection_rulelist_ddos'] = 'Distributed denial of service dete
 $lang['intrusion_detection_rulelist_deleted'] = 'Deleted';
 $lang['intrusion_detection_rulelist_dns'] = 'DNS exploits';
 $lang['intrusion_detection_rulelist_dos'] = 'Denial of service detection - DOS';
-$lang['intrusion_detection_rulelist_drop_dont_route_or_peer'] = 'DROP - do not route or peer';
+$lang['intrusion_detection_rulelist_drop_dont_route_or_peer'] = 'DROP - don\'t route or peer';
 $lang['intrusion_detection_rulelist_dshield'] = 'Dshield';
-$lang['intrusion_detection_rulelist_experimental'] = 'Experimental';
+$lang['intrusion_detection_rulelist_experimental'] = 'Experimental rules';
 $lang['intrusion_detection_rulelist_exploit'] = 'Miscellaneous exploits';
 $lang['intrusion_detection_rulelist_finger'] = 'Finger exploits';
 $lang['intrusion_detection_rulelist_ftp'] = 'FTP exploits';
