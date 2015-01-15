@@ -1,7 +1,7 @@
 <?php
 
-$lang['intrusion_detection_app_description'] = 'The advanced Intrusion Detection app performs security scanning at the network level in real-time.';
-$lang['intrusion_detection_app_name'] = 'Intrusion Detection';
+$lang['intrusion_detection_app_description'] = 'The advanced Intrusion Detection System app performs security scanning at the network level in real-time.';
+$lang['intrusion_detection_app_name'] = 'Intrusion Detection System';
 $lang['intrusion_detection_base_rule_set'] = 'Base Rule Set';
 $lang['intrusion_detection_intrusion_detection'] = 'Intrusion Detection';
 $lang['intrusion_detection_last_update'] = 'Last Update';

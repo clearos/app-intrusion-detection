@@ -91,6 +91,6 @@ class Settings extends ClearOS_Controller
         // Load views
         //-----------
 
-        $this->page->view_form('settings', $data, lang('intrusion_detection_intrusion_detection'));
+        $this->page->view_form('settings', $data, lang('base_settings'));
     }
 }

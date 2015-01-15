@@ -65,6 +65,6 @@ class Intrusion_Detection extends ClearOS_Controller
 
         $views = array('intrusion_detection/server', 'intrusion_detection/overview', 'intrusion_detection/settings');
 
-        $this->page->view_forms($views, lang('intrusion_detection_intrusion_detection'));
+        $this->page->view_forms($views, lang('intrusion_detection_app_name'));
     }
 }

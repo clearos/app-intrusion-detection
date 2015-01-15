@@ -1,9 +1,9 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 2.0.5
+Version: 2.0.14
 Release: 1%{dist}
-Summary: Intrusion Detection
+Summary: Intrusion Detection System
 License: GPLv3
 Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
@@ -13,10 +13,10 @@ Requires: app-base
 Requires: app-network
 
 %description
-The advanced Intrusion Detection app performs security scanning at the network level in real-time.
+The advanced Intrusion Detection System app performs security scanning at the network level in real-time.
 
 %package core
-Summary: Intrusion Detection - Core
+Summary: Intrusion Detection System - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
@@ -26,7 +26,7 @@ Requires: snort >= 2.9.6.2
 Requires: snort-gpl-rules
 
 %description core
-The advanced Intrusion Detection app performs security scanning at the network level in real-time.
+The advanced Intrusion Detection System app performs security scanning at the network level in real-time.
 
 This package provides the core API and libraries.
 
