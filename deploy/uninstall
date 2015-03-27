@@ -1,0 +1,8 @@
+#!/bin/sh
+
+logger -p local6.notice -t installer "app-intrusion-detection-core - stopping intrusion detection server"
+service snort stop >/dev/null 2>&1
+
+logger -p local6.notice -t installer "app-intrusion-detection-core - disabling intrusion detection server"
+chkconfig snort off >/dev/null 2>&1
+
