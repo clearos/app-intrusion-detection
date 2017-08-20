@@ -1,7 +1,7 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 2.1.7
+Version: 2.1.8
 Release: 1%{dist}
 Summary: Intrusion Detection System
 License: GPLv3

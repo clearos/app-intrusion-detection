@@ -292,7 +292,7 @@ class Snort extends Daemon
                             $details['rev'] = $matches[1];
                         }
 
-                        if (preg_match_all('/reference:\s*url,\s*([\w&%#+=:,@\.\/_-]+)\s*;/', $alert[1], $matches)) {
+                        if (preg_match_all('/reference:\s*url,\s*([\w&%#+=:,@\.\/_?!-]+)\s*;/', $alert[1], $matches)) {
                             foreach ($matches[1] as $ref) $details['ref'][] = "http://$ref";
                         }
                     }
