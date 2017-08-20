@@ -1,7 +1,7 @@
 
 Name: app-intrusion-detection
 Epoch: 1
-Version: 2.1.6
+Version: 2.1.7
 Release: 1%{dist}
 Summary: Intrusion Detection System
 License: GPLv3
@@ -82,6 +82,7 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/intrusion_detection/packaging
+%exclude /usr/clearos/apps/intrusion_detection/unify.json
 %dir /usr/clearos/apps/intrusion_detection
 %dir /var/clearos/intrusion_detection
 %dir /var/clearos/intrusion_detection/backup

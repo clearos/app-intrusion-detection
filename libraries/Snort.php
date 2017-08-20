@@ -250,6 +250,64 @@ class Snort extends Daemon
     }
 
     /**
+     * Returns rule details.
+     *
+     * @return array rule details by SID.
+     * @throws Engine_Exception
+     */
+
+    public function get_rule_details($sid)
+    {
+        clearos_profile(__METHOD__, __LINE__);
+
+        if (! $this->rule_sets_loaded)
+            $this->_load_rule_sets();
+
+        $details = array();
+        foreach ($this->rule_sets as $vendor => $sets) {
+            foreach ($sets as $set => $set_details) {
+                $file = new File(self::PATH_RULES .
+                    "/$vendor/{$set_details['filename']}");
+                $lines = $file->get_contents_as_array();
+
+                foreach ($lines as $line) {
+                    if (!preg_match('/^alert\s+(\w+)/', $line, $matches)) continue;
+                    if (!preg_match("/sid:$sid;/", $line)) continue;
+
+                    $details['sid'] = $sid;
+                    $details['proto'] = $matches[1];
+
+                    if (preg_match('/\((\s*\w+.*\s*;\s*)\)$/', trim($line), $alert)) {
+
+                        if (preg_match('/msg:"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)";/s', $alert[1], $matches) ||
+                            preg_match("/msg:'([^'\\\\]*(?:\\\\.[^'\\\\]*)*)';/s", $alert[1], $matches)) {
+                            $details['desc'] = trim($matches[1]);
+                        }
+
+                        if (preg_match('/classtype:\s*([\w_-]+)\s*;/', $alert[1], $matches)) {
+                            $details['classtype'] = $matches[1];
+                        }
+
+                        if (preg_match('/rev:\s*(\d+)\s*;/', $alert[1], $matches)) {
+                            $details['rev'] = $matches[1];
+                        }
+
+                        if (preg_match_all('/reference:\s*url,\s*([\w&%#+=:,@\.\/_-]+)\s*;/', $alert[1], $matches)) {
+                            foreach ($matches[1] as $ref) $details['ref'][] = "http://$ref";
+                        }
+                    }
+
+                    break;
+                }
+
+                if (count($details)) break;
+            }
+        }
+
+        return $details;
+    }
+
+    /**
      * Returns detailed list of rule sets.
      *
      * @return array detailed list of rule sets
@@ -540,3 +598,5 @@ class Snort extends Daemon
         $file->dump_contents_from_array($new_lines);
     }
 }
+
+// vi: expandtab shiftwidth=4 softtabstop=4 tabstop=4
