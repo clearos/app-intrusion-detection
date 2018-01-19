@@ -30,11 +30,13 @@ $app['requires'] = array(
     'app-network',
 );
 
+// syswatch powers the network-connected event needed by Snort
 $app['core_requires'] = array(
     'app-network-core',
     'rsyslog',
     'snort >= 2.9.6.2',
     'snort-gpl-rules',
+    'syswatch'
 );
 
 $app['core_directory_manifest'] = array(

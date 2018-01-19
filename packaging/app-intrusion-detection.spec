@@ -24,6 +24,7 @@ Requires: app-network-core
 Requires: rsyslog
 Requires: snort >= 2.9.6.2
 Requires: snort-gpl-rules
+Requires: syswatch
 
 %description core
 The advanced Intrusion Detection System app performs security scanning at the network level in real-time.
